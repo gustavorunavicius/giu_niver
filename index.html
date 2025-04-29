@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eu tenho tudo planejado...!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffebf0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .photo {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        .message {
+            padding: 20px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .timer {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .countdown {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4b6e;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Parabéns, Gatinha!</h1>
+        
+        <div class="timer">
+            <h2>Faltam</h2>
+            <div id="countdown" class="countdown"></div>
+            <h2>para eu ver você ❤️</h2>
+        </div>
+
+        <img src="1.jpg" alt="Foto 1" class="photo">
+        
+         <div class="message">
+            Não conseguiria demonstrar tudo isso em uma carta impressa pela empresa de flores, 
+            como sendo um jovem formado em computação tive que ter outra ideia hahahah!<br>
+        </div>
+
+        <img src="2.jpg" alt="Foto 2" class="photo">
+        <div class="message">
+            Você é a razão do meu sorriso, a luz dos meus dias e o amor da minha vida. 
+            Estou contando os dias para te ver novamente!<br>
+        </div>
+        <img src="3.jpg" alt="Foto 3" class="photo">
+        <div class="message">
+            PS: Eu prometo que esse vai ser o ultimo aniversario que ira passar longe de mim<br>
+        </div>    
+    </div>
+    <!-- Código para a música de fundo -->
+    <audio autoplay loop>
+        <source src="angelsbymyside.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Define a data final (ajuste para a data que você vai ver ela)
+            const endDate = new Date('2025-05-22T08:00:00').getTime();
+
+        // Atualiza o contador a cada segundo
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = endDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = 
+                days + " dias, " + hours + " horas, "
+                + minutes + " minutos e " + seconds + " segundos";
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "CHEGOU O DIA! ❤️";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>  
